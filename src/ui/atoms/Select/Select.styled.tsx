@@ -11,6 +11,6 @@ export const SelectOption = styled("select")`
 `;
 
 export const Option = styled("option")`
-  background-color: #51e0a7;
+  background-color: #cfcfcf;
   color: black;
 `;
