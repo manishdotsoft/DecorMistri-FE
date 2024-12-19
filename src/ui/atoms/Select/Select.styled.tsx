@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
 export const SelectFieldParent = styled("div")<{ backgroundColor?: string }>`
-  background-color: ${(props) => props.backgroundColor || "transparent"};
+  background-color: ${(props) => props.backgroundColor};
   padding: 8px;
   border-radius: 4px;
 `;
