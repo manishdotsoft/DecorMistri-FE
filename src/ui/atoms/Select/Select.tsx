@@ -17,7 +17,7 @@ const SelectOptions = ({
   onChange,
 }: SelectProps) => {
   const [selectedValue, setSelectedValue] = useState(options[0] || value);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
 
   const handleSelectChange = (event: any) => {
     const newValue = event.target.value;
@@ -25,38 +25,38 @@ const SelectOptions = ({
     onChange(newValue);
   };
 
-  const handleSearchChange = (event: any) => {
-    setSearchTerm(event.target.value);
-  };
+  // const handleSearchChange = (event: any) => {
+  //   setSearchTerm(event.target.value);
+  // };
 
   return (
     <>
       <SelectFieldParent style={{ backgroundColor }}>
         {label && <label>{label}</label>}
-        <h1>hello</h1>
-        <input
+
+        {/* <input
           type="text"
           value={searchTerm}
           onChange={handleSearchChange}
           placeholder="Search your option"
-        />
+        /> */}
         <SelectOption
           as="select"
           value={selectedValue}
           onChange={handleSelectChange}
         >
-          {/* {options.map((option) => (
-          <Option key={option} value={option}>
-            {option}
-          </Option>
-        ))} */}
-          {options
+          {options.map((option) => (
+            <Option key={option} value={option}>
+              {option}
+            </Option>
+          ))}
+          {/* {options
             .filter((option) => option.toLowerCase().includes(searchTerm))
             .map((option) => (
               <Option key={option} value={option}>
                 {option}
               </Option>
-            ))}
+            ))} */}
         </SelectOption>
       </SelectFieldParent>
     </>
