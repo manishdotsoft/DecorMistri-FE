@@ -26,7 +26,6 @@
     "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
     "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */
   },
-  // "types": ["@storybook/react"],
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
