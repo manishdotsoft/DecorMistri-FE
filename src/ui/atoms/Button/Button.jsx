@@ -1,8 +1,8 @@
-import React from "react";
-import { styled, Typography } from "@mui/material";
-import PropTypes from "prop-types";
-import { CircularProgress } from "@mui/material";
-import { StyledButton, DisabledButton } from "./Button.style";
+import React from 'react';
+import { styled, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
+import { CircularProgress } from '@mui/material';
+import { StyledButton, DisabledButton } from './Button.style';
 
 const Button = ({
   title,
@@ -23,7 +23,7 @@ const Button = ({
         <DisabledButton onClick={onClick} style={{ ...style }}>
           <Typography
             style={{
-              fontSize: buttonFontSize ?? "16px",
+              fontSize: buttonFontSize ?? '16px',
               fontWeight: fontWeight,
             }}
           >
@@ -42,12 +42,12 @@ const Button = ({
         >
           <Typography
             style={{
-              fontSize: buttonFontSize ?? "16px",
-              fontWeight: fontWeight || "normal",
-              letterSpacing: letterSpacing || "normal",
+              fontSize: buttonFontSize ?? '16px',
+              fontWeight: fontWeight || 'normal',
+              letterSpacing: letterSpacing || 'normal',
             }}
           >
-            {" "}
+            {' '}
             {loading ? <CircularProgress size={20} /> : title}
           </Typography>
         </StyledButton>
@@ -61,7 +61,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   style: PropTypes.object,
-  variant: PropTypes.oneOf(["contained", "outlined"]),
+  variant: PropTypes.oneOf(['contained', 'outlined']),
   color: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
   loading: PropTypes.bool,
