@@ -69,7 +69,6 @@ const Button: React.FC<ButtonProps> = ({
               {title}
             </Typography>
           )}
-          
         </StyledButton>
       )}
     </>
