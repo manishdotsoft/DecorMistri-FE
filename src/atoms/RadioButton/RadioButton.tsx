@@ -5,6 +5,7 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  useTheme,
 } from '@mui/material';
 
 export interface RadioOption {
@@ -29,9 +30,20 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   name,
   direction,
 }) => {
+  const theme: string | number | any = useTheme();
+  console.log(theme);
   return (
     <FormControl>
-      {label && <FormLabel>{label}</FormLabel>}
+      {label && (
+        <FormLabel
+          sx={{
+            fontSize: theme.typography.h6.fontSize,
+            color: theme.palette.primary.main,
+          }}
+        >
+          {label}
+        </FormLabel>
+      )}
       <RadioGroup
         row={direction === 'row'}
         value={selectedValue}
