@@ -1,10 +1,14 @@
-import React from 'react';
-import { Grid, Link, Typography, Box } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import { useFormik, FormikHelpers } from 'formik';
-import { signUpSchema } from './SchemasSignup';
-import { theme } from '../../thems/primitives/theme';
-import { Link as RouterLink } from 'react-router-dom';
+import React from "react";
+import { Grid, Link, Typography, Box } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { useFormik } from "formik";
+import { signUpSchema } from "./SchemasSignup";
+import { theme } from "../../thems/primitives/theme";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
+import { setSignUpData } from "../../features/signUpSlice";
+
+import { Link as RouterLink } from "react-router-dom";
 
 import {
   StyledContainer,
@@ -15,7 +19,7 @@ import {
   StyledButton,
   StyledContainerWrapper,
   GooleSignUp,
-} from './SignUp.style';
+} from "./SignUp.style";
 
 interface SignUpFormValues {
   firstName: string;
@@ -26,28 +30,28 @@ interface SignUpFormValues {
 }
 
 const initialValues: SignUpFormValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  confirm_password: '',
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirm_password: "",
 };
 
 const SignUpForm: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const { values, errors, handleChange, touched, handleBlur, handleSubmit } =
     useFormik<SignUpFormValues>({
-      initialValues: initialValues,
+      initialValues,
       validationSchema: signUpSchema,
-      onSubmit: (
-        values: SignUpFormValues,
-        actions: FormikHelpers<SignUpFormValues>
-      ) => {
-        console.log('Form Submitted:', values);
+      onSubmit: (values, actions) => {
+        dispatch(setSignUpData(values));
+        console.log("Form Submitted:", values);
         actions.resetForm();
       },
     });
 
-  const isAnyFieldEmpty = Object.values(values).some((value) => value === '');
+  const isAnyFieldEmpty = Object.values(values).some((value) => value === "");
 
   return (
     <ThemeProvider theme={theme}>
@@ -166,15 +170,15 @@ const SignUpForm: React.FC = () => {
             >
               Sign Up
             </StyledButton>
-            <Box sx={{ textAlign: 'center', mt: 2 }}>
+            <Box sx={{ textAlign: "center", mt: 2 }}>
               <Typography variant="body2">
-                Already have an account?{' '}
+                Already have an account?{" "}
                 <Link
                   component={RouterLink}
                   to="/"
                   underline="none"
                   color="inherit"
-                  sx={{ cursor: 'pointer', color: 'blue' }}
+                  sx={{ cursor: "pointer", color: "blue" }}
                 >
                   Sign in
                 </Link>
@@ -184,10 +188,10 @@ const SignUpForm: React.FC = () => {
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZI78WvDPQ241thhVYKtVphlc_J01LbnFVqA&s"
                 alt="goole-image"
-                style={{ height: '34px' }}
+                style={{ height: "34px" }}
               />
               {/* continue with google */}
-              <Typography sx={{ fontSize: '0.8rem' }}>
+              <Typography sx={{ fontSize: "0.8rem" }}>
                 Continue with Google
               </Typography>
             </GooleSignUp>

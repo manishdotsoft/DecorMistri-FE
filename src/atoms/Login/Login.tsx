@@ -1,29 +1,36 @@
-import React from 'react';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setLoginData } from "../../features/loginSlice";
 import {
   LoginContainer,
   Logo,
   StyledTextField,
   StyledButton,
-} from './LoginPage.styel';
-import { Box, Typography, Link } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import { Formik, Form, Field } from 'formik';
-import { LoginSchema } from './LoginSchema';
+} from "./LoginPage.styel";
+
+import { AppDispatch } from "../../store/store";
+
+import { Box, Typography, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
+import { LoginSchema } from "./LoginSchema";
 
 const initialValues = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 const LoginPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: "background.default",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <LoginContainer maxWidth="xs">
@@ -38,7 +45,7 @@ const LoginPage = () => {
           initialValues={initialValues}
           validationSchema={LoginSchema}
           onSubmit={(values, { resetForm }) => {
-            console.log(values);
+            dispatch(setLoginData(values)); // Corrected dispatch
             resetForm();
           }}
         >
