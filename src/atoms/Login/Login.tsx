@@ -1,23 +1,23 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { setLoginData } from "../../features/loginSlice";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setLoginData } from '../../features/loginSlice';
 import {
   LoginContainer,
   Logo,
   StyledTextField,
   StyledButton,
-} from "./LoginPage.styel";
+} from './LoginPage.styel';
 
-import { AppDispatch } from "../../store/store";
+import { AppDispatch } from '../../store/store';
 
-import { Box, Typography, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
-import { LoginSchema } from "./LoginSchema";
+import { Box, Typography, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
+import { LoginSchema } from './LoginSchema';
 
 const initialValues = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const LoginPage = () => {
@@ -26,11 +26,11 @@ const LoginPage = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: 'background.default',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <LoginContainer maxWidth="xs">
@@ -45,7 +45,7 @@ const LoginPage = () => {
           initialValues={initialValues}
           validationSchema={LoginSchema}
           onSubmit={(values, { resetForm }) => {
-            dispatch(setLoginData(values)); // Corrected dispatch
+            dispatch(setLoginData(values));
             resetForm();
           }}
         >
@@ -70,9 +70,16 @@ const LoginPage = () => {
                 error={touched.password && !!errors.password}
                 helperText={touched.password && errors.password}
               />
-              <StyledButton type="submit" variant="contained" fullWidth>
-                Login
-              </StyledButton>
+              <Link
+                component={RouterLink}
+                to="/dashbord"
+                underline="none"
+                color="inherit"
+              >
+                <StyledButton type="submit" variant="contained" fullWidth>
+                  Login
+                </StyledButton>
+              </Link>
             </Form>
           )}
         </Formik>
