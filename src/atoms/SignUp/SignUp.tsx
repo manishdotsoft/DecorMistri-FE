@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { setSignUpData } from "../../features/signUpSlice";
 
+import { Link as RouterLink } from "react-router-dom";
+
 import {
   StyledContainer,
   StyledForm,
@@ -171,7 +173,15 @@ const SignUpForm: React.FC = () => {
             <Box sx={{ textAlign: "center", mt: 2 }}>
               <Typography variant="body2">
                 Already have an account?{" "}
-                <Link sx={{ cursor: "pointer", color: "blue" }}>Sign in</Link>
+                <Link
+                  component={RouterLink}
+                  to="/"
+                  underline="none"
+                  color="inherit"
+                  sx={{ cursor: "pointer", color: "blue" }}
+                >
+                  Sign in
+                </Link>
               </Typography>
             </Box>
             <GooleSignUp>
