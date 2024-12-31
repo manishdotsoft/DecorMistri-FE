@@ -1,16 +1,22 @@
-import React from "react";
-import { useTheme } from "@mui/material";
-import LoginPage from "./atoms/Login/Login";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useTheme } from '@mui/material';
+import LoginPage from './atoms/Login/Login';
+import ForgetPassword from './ForgetPage/ForgotPassword';
+import SignUpForm from './atoms/SignUp/SignUp';
 
-import SignUpForm from "./atoms/SignUp/SignUp";
 const App = () => {
   const theme: any = useTheme();
-  console.log(theme, "theme");
+  console.log(theme, 'theme');
+
   return (
-    <div>
-      <LoginPage />
-      <SignUpForm />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/forgot-password" element={<ForgetPassword />} />
+      </Routes>
+    </Router>
   );
 };
 
