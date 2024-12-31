@@ -1,9 +1,13 @@
 import React from "react";
 import { Grid, Link, Typography, Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import { useFormik, FormikHelpers } from "formik";
+import { useFormik } from "formik";
 import { signUpSchema } from "./SchemasSignup";
 import { theme } from "../../thems/primitives/theme";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
+import { setSignUpData } from "../../features/signUpSlice";
+
 import {
   StyledContainer,
   StyledForm,
@@ -32,14 +36,14 @@ const initialValues: SignUpFormValues = {
 };
 
 const SignUpForm: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const { values, errors, handleChange, touched, handleBlur, handleSubmit } =
     useFormik<SignUpFormValues>({
-      initialValues: initialValues,
+      initialValues,
       validationSchema: signUpSchema,
-      onSubmit: (
-        values: SignUpFormValues,
-        actions: FormikHelpers<SignUpFormValues>
-      ) => {
+      onSubmit: (values, actions) => {
+        dispatch(setSignUpData(values));
         console.log("Form Submitted:", values);
         actions.resetForm();
       },
