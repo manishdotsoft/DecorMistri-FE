@@ -7,7 +7,7 @@ import {
   StyledTextField,
   StyledButton,
   LoginContainer,
-} from '../atoms/Login/LoginPage.styel';
+} from '../Login/LoginPage.styel';
 
 const initialValues = {
   email: '',

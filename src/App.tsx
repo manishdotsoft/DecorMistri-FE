@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTheme } from '@mui/material';
-import LoginPage from './atoms/Login/Login';
-import Dashboard from './atoms/Dashbord/Dashbord';
-import ForgetPassword from './ForgetPage/ForgotPassword';
+import LoginPage from './pages/Login/Login';
+import Dashboard from './pages/Dashbord/Dashbord';
+import ForgetPassword from './pages/ForgetPage/ForgotPassword';
 
-import SignUpForm from './atoms/SignUp/SignUp';
+import SignUpForm from './pages/SignUp/SignUp';
 // import SignUpData from "./atoms/SignUp/SignUpData";
 // import LoginDataComponent from "./atoms/Login/LoginData";
 const App = () => {
