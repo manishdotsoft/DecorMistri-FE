@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Link, Typography, Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { signUpSchema } from "./SchemasSignup";
 import { theme } from "../../thems/primitives/theme";
-import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { setSignUpData } from "../../store/reducers/signUpSlice";
+import { useDispatch } from "react-redux";
+import Toaster from "../Toaster/Toaster";
 
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import {
   StyledContainer,
@@ -39,24 +40,45 @@ const initialValues: SignUpFormValues = {
 
 const SignUpForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const [toasterOpen, setToasterOpen] = useState(false);
 
   const { values, errors, handleChange, touched, handleBlur, handleSubmit } =
     useFormik<SignUpFormValues>({
       initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, actions) => {
+        // Dispatching signup data and showing toaster message
         dispatch(setSignUpData(values));
+        setToasterOpen(true);
         console.log("Form Submitted:", values);
         actions.resetForm();
+
+        // Navigating after a successful signup
+        setTimeout(() => {
+          navigate("/"); // Navigate after a short delay
+        }, 2000);
       },
     });
 
-  const isAnyFieldEmpty = Object.values(values).some((value) => value === "");
+  const handleCloseToaster = () => {
+    setToasterOpen(false);
+  };
+
+  const isAnyFieldEmpty = Object.values(values).some(
+    (value) => value.trim() === ""
+  );
 
   return (
     <ThemeProvider theme={theme}>
       <StyledContainer>
         <StyledContainerWrapper>
+          <Toaster
+            message="Account created successfully!"
+            type="success"
+            open={toasterOpen}
+            onClose={handleCloseToaster}
+          />
           {/* @ts-ignore */}
           <StyledForm component="form" onSubmit={handleSubmit}>
             <StyledHeader>
@@ -172,7 +194,7 @@ const SignUpForm: React.FC = () => {
             </StyledButton>
             <Box sx={{ textAlign: "center", mt: 2 }}>
               <Typography variant="body2">
-                Already have an account?{" "}
+                Already have an account?
                 <Link
                   component={RouterLink}
                   to="/"

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setLoginData } from "../../store/reducers/loginSlice";
+
 import {
   LoginContainer,
   Logo,
@@ -45,7 +46,7 @@ const LoginPage = () => {
           initialValues={initialValues}
           validationSchema={LoginSchema}
           onSubmit={(values, { resetForm }) => {
-            dispatch(setLoginData(values)); // Corrected dispatch
+            dispatch(setLoginData(values));
             resetForm();
           }}
         >
@@ -70,9 +71,16 @@ const LoginPage = () => {
                 error={touched.password && !!errors.password}
                 helperText={touched.password && errors.password}
               />
-              <StyledButton type="submit" variant="contained" fullWidth>
-                Login
-              </StyledButton>
+              <Link
+                component={RouterLink}
+                to="/dashbord"
+                underline="none"
+                color="inherit"
+              >
+                <StyledButton type="submit" variant="contained" fullWidth>
+                  Login
+                </StyledButton>
+              </Link>
             </Form>
           )}
         </Formik>
