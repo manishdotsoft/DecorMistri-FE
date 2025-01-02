@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setLoginData } from "../../features/loginSlice";
+import { setLoginData } from "../../store/reducers/loginSlice";
 import {
   LoginContainer,
   Logo,

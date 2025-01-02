@@ -6,7 +6,7 @@ import { signUpSchema } from "./SchemasSignup";
 import { theme } from "../../thems/primitives/theme";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
-import { setSignUpData } from "../../features/signUpSlice";
+import { setSignUpData } from "../../store/reducers/signUpSlice";
 
 import { Link as RouterLink } from "react-router-dom";
 
@@ -190,7 +190,7 @@ const SignUpForm: React.FC = () => {
                 alt="goole-image"
                 style={{ height: "34px" }}
               />
-              {/* continue with google */}
+
               <Typography sx={{ fontSize: "0.8rem" }}>
                 Continue with Google
               </Typography>
