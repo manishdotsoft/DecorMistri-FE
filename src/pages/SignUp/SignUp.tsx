@@ -7,7 +7,7 @@ import { theme } from "../../thems/primitives/theme";
 import { AppDispatch } from "../../store/store";
 import { setSignUpData } from "../../store/reducers/signUpSlice";
 import { useDispatch } from "react-redux";
-import Toaster from "../Toaster/Toaster";
+import Toaster from "../../atoms/Toaster/Toaster";
 
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
